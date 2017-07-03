@@ -1,0 +1,7 @@
+server:
+  port: 9094
+
+spring:
+  sleuth:
+    sampler:
+      percentage: 0.2

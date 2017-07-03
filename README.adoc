@@ -1,0 +1,13 @@
+= Camel Zipkin Demo
+
+The demos how to use Zipkin Tracing with Camel on JBoss Fuse (Karaf 2.4.0)
+
+[NOTE]
+----
+Current you need to use the brave from https://github.com/kameshsampath/brave/tree/issue-451 and install it
+locally, it has fix reported in the https://github.com/openzipkin/brave/issues/451
+----
+
+= Building
+
+Clone demos from 

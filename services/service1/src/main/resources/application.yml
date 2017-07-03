@@ -1,0 +1,13 @@
+server:
+  port: 9090
+
+feign:
+  hystrix:
+    enabled: false
+
+spring:
+  sleuth:
+    sampler:
+      percentage: 0.2
+    feign:
+      enabled: true

@@ -2,12 +2,45 @@
 
 The demos how to use Zipkin Tracing with Camel on JBoss Fuse (Karaf 2.4.0)
 
-[NOTE]
-----
+[WARNING]
+===
 Current you need to use the brave from https://github.com/kameshsampath/brave/tree/issue-451 and install it
 locally, it has fix reported in the https://github.com/openzipkin/brave/issues/451
-----
+===
 
 = Building
 
-Clone demos from 
+Clone demos from https://github.com/kameshsampath/camel-zipkin-demo[camel-zipkin-demo] and form the clone directory
+run `./mvnw clean install` to install the projects in local repository
+
+== Starting Zipkin
+
+The demo requries to run zipkin, do the following to make it run locally on port 9411
+[source,sh]
+----
+wget -O zipkin.jar 'https://search.maven.org/remote_content?g=io.zipkin.java&a=zipkin-server&v=LATEST&c=exec'
+java -jar zipkin.jar
+----
+
+== Starting Services
+
+The zipkin tracing uses four simple helloworld kind of HTTP services, all are tiny Spring Boot applications
+
+* http://localhost:9090[service1]
+* http://localhost:9092[service2]
+* http://localhost:9093[service3]
+* http://localhost:9094[service4]
+
+
+== Deploying in Fuse
+
+Build and install `http-tracing-service` and `camel-zpikin-blueprint-demo`.
+
+From fuse console install add the repository url of link:./features.xml[features.xml] and then install the feature
+`camel-zipkin-demo`
+
+== Checking the traces
+
+Once you have deployed the application successfully, hit the url http://localhost:8085, this will call http://localhost:9090[service1],
+no response will be shown but after 10-15 secs if you access http://locahost:9411[zipkin] you will see the spans
+
